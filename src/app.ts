@@ -1,4 +1,4 @@
-import 'reflect-metadata';  // Import necessário para o TypeORM funcionar corretamente
+import 'reflect-metadata';  
 import express from 'express';
 import { createConnection } from 'typeorm';
 import { MeasureController } from './controllers/measureController';
@@ -17,3 +17,5 @@ createConnection().then(() => {
         console.log('Server is running on port 3000');
     });
 }).catch(error => console.log('Database connection error:', error));
+
+export default app;
