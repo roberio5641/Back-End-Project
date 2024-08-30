@@ -7,7 +7,7 @@ class MeasureController {
         try {
             const { image, customer_code, measure_datetime, measure_type } = req.body;
 
-            // Validação dos dados
+            
             if (!image || !customer_code || !measure_datetime || !['WATER', 'GAS'].includes(measure_type)) {
                 return res.status(400).json({
                     error_code: "INVALID_DATA",
@@ -25,12 +25,12 @@ class MeasureController {
                 });
             }
 
-            // Integração com o modelo Gemini 1.5 para extrair valor da imagem
+            
             const measureValue = await measureService.extractValueFromImage(image);
             const measureUuid = await measureService.saveMeasure(customer_code, measure_datetime, measure_type, measureValue);
 
             return res.status(200).json({
-                image_url: "URL temporária da imagem",  // Deve ser a URL real retornada pela API ou gerada por você
+                image_url: "URL temporária da imagem",   
                 measure_value: measureValue,
                 measure_uuid: measureUuid
             });
@@ -43,12 +43,12 @@ class MeasureController {
         }
     }
 
-    // Endpoint para confirmar ou corrigir o valor lido do medidor
+   
     static async confirmMeasure(req: Request, res: Response) {
         try {
             const { measure_uuid, confirmed_value } = req.body;
 
-            // Validação dos dados
+           
             if (!measure_uuid || typeof confirmed_value !== 'number') {
                 return res.status(400).json({
                     error_code: "INVALID_DATA",
@@ -73,7 +73,7 @@ class MeasureController {
                 });
             }
 
-            // Atualiza o valor da leitura e marca como confirmado
+            
             measure.measure_value = confirmed_value;
             measure.has_confirmed = true;
             await measureService.updateMeasure(measure);
@@ -88,13 +88,13 @@ class MeasureController {
         }
     }
 
-    // Endpoint para listar todas as leituras de um cliente
+    
     static async listMeasures(req: Request, res: Response) {
         try {
             const { customer_code } = req.params;
             const { measure_type } = req.query;
 
-            // Validação dos dados
+            
             if (typeof customer_code !== 'string') {
                 return res.status(400).json({
                     error_code: "INVALID_DATA",
