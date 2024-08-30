@@ -7,7 +7,7 @@ services:
     env_file:
       - .env
     ports:
-      - "3000:3000"
+      - "5433:5432"
     volumes:
       - .:/app
       - /app/node_modules
@@ -18,9 +18,9 @@ services:
     image: postgres:15-alpine
     container_name: my_db
     environment:
-      POSTGRES_USER: yourusername
-      POSTGRES_PASSWORD: yourpassword
-      POSTGRES_DB: yourdatabase
+      POSTGRES_USER: Etapa1
+      POSTGRES_PASSWORD: etapa1
+      POSTGRES_DB: Etapa1DB
     ports:
       - "5432:5432"
     volumes:

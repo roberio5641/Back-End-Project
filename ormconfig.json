@@ -2,9 +2,9 @@
     "type": "postgres",
     "host": "db",
     "port": 5432,
-    "username": "yourusername",
-    "password": "yourpassword",
-    "database": "yourdatabase",
+    "username": "Etapa1",
+    "password": "etapa1",
+    "database": "Etapa1DB",
     "synchronize": true,
     "logging": false,
     "entities": [

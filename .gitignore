@@ -1,0 +1,10 @@
+*.log
+
+node_modules/
+vendor/
+
+*.tmp
+*.swp
+*.env
+
+secret-config.json
